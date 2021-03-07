@@ -24,10 +24,22 @@
 // tap: /    // hold: SHIFT
 #define SFT_SLSH MT(MOD_RSFT, KC_SLSH)
 
+// tap: `    // hold: SHIFT
+#define SFT_GRAVE MT(MOD_LSFT, KC_GRAVE)
+// tap: \    // hold: SHIFT
+#define SFT_BSLS MT(MOD_RSFT, KC_BSLS)
+
 // Layer movment
 #define FN0 MO(_RS)  // move to layer 1 (L1)
 #define FN1 KC_TRNS  // move to layer 2 (L2)
 #define FN2 TO(_QW)  // move to layer 0 (L0)
+
+// %
+#define KC_PCT S(KC_5)
+// ^
+#define KC_CFX S(KC_6)
+// ~
+#define KC_TLD S(KC_GRAVE)
 
   /*
    *  q     w     e     r     t               ||         y        u     i/tab o  p
@@ -44,17 +56,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /*
-   *  !       @     up     {    }               ||         pgup      7     8     9    *
-   *  #     left   down  right  $               ||         pgdn      4     5     6    +
-   *  [       ]      (     )    &               ||           `       1     2     3    \
-   * lower  insert super  L2    alt/spc alt/spc || alt/spc alt/spc   L2    .     0    =
+   *  1     2      3     4     5               ||         6       7    8    9    0
+   *  !     @      #     $     %               ||         ^       &    (    )    +
+   *  `/sft ~      ?     ?     ?               ||         ?       ?    [    ]    |/sft
+   *  lower tab    super L2    alt/spc alt/spc || alt/spc alt/spc L2   {    }    =
    */
   [_RS] = LAYOUT( /* [> RAISE <] */
-    KC_EXLM, KC_AT,   KC_UP,   KC_LCBR, KC_RCBR,                   KC_PGUP, KC_7,    KC_8,   KC_9, KC_ASTR ,
-    KC_HASH, KC_LEFT, KC_DOWN, KC_RGHT, KC_DLR,                    KC_PGDN, KC_4,    KC_5,   KC_6, KC_PLUS ,
-    KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_AMPR,                   KC_GRV,  KC_1,    KC_2,   KC_3, KC_BSLS ,
-    TG(_LW), KC_INS,  KC_LGUI, FN1,     ALT_SPC, ALT_SPC, ALT_SPC, ALT_SPC, FN1,     KC_DOT, KC_0, KC_EQL
+    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0     ,
+    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PCT,                    KC_CFX,  KC_AMPR, KC_LPRN, KC_RPRN, KC_PLUS  ,
+    SFT_GRAVE, KC_TLD,  KC_NO,   KC_NO,   KC_NO,                     KC_NO,   KC_NO,   KC_LBRC, KC_RBRC, SFT_BSLS ,
+    TG(_LW),   KC_INS,  KC_LGUI, FN1,     ALT_SPC, ALT_SPC, ALT_SPC, ALT_SPC, FN1,     KC_LCBR, KC_RCBR, KC_EQL
   ),
+
   /*
    * insert home   up  end   pgup             ||          up       F7  F8    F9     F10
    *  del   left  down right pgdn             ||         down      F4  F5    F6     F11

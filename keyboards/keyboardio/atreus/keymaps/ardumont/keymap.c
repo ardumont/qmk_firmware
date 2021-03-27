@@ -16,19 +16,19 @@ enum layer_names {
 };
 
 // tap: a,   // hold: Ctrl
-#define CTL_A     MT(MOD_LCTL, KC_A)      // LCTL_T(KC_A)
+#define A_CTL     CTL_T(KC_A)            // MT(MOD_LCTL, KC_A);
 // tap: ;    // hold: Ctrl
-#define CTL_SCLN  MT(MOD_RCTL, KC_SCLN)   // LCTL_T(KC_SCLN)
+#define SCLN_CTL  CTL_T(KC_SCLN)         // MT(MOD_RCTL, KC_SCLN)
 
 // tap: z    // hold: SHIFT
-#define SFT_Z     MT(MOD_LSFT, KC_Z)      // SFT_T(KC_Z
+#define Z_SFT     SFT_T(KC_Z)
 // tap: /    // hold: SHIFT
-#define SFT_SLSH MT(MOD_RSFT, KC_SLSH)
+#define SLSH_SFT  SFT_T(KC_SLSH)
 
 // tap: `    // hold: SHIFT
-#define SFT_GRAVE MT(MOD_LSFT, KC_GRAVE)
+#define GRAVE_SFT SFT_T(KC_GRAVE)
 // tap: [    // hold: SHIFT
-#define SFT_RBRC MT(MOD_RSFT, KC_RBRC)
+#define RBRC_SFT  SFT_T(KC_RBRC)
 
 // Layer movment
 #define FN0 MO(_RS)  // move to layer 1 (L1)
@@ -49,8 +49,8 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
     KC_Q,   KC_W,   KC_E,     KC_R,    KC_T,                      KC_Y,   KC_U,    KC_I,    KC_O,    KC_P    ,
-    CTL_A,  KC_S,   KC_D,     KC_F,    KC_G,                      KC_H,   KC_J,    KC_K,    KC_L,    CTL_SCLN,
-    SFT_Z,  KC_X,   KC_C,     KC_V,    KC_B,   KC_GRAVE, KC_BSLS, KC_N,   KC_M,    KC_COMM, KC_DOT,  SFT_SLSH,
+    A_CTL,  KC_S,   KC_D,     KC_F,    KC_G,                      KC_H,   KC_J,    KC_K,    KC_L,    SCLN_CTL,
+    Z_SFT,  KC_X,   KC_C,     KC_V,    KC_B,   KC_GRAVE, KC_BSLS, KC_N,   KC_M,    KC_COMM, KC_DOT,  SLSH_SFT,
     KC_ESC, KC_TAB, KC_LGUI,  KC_LALT, KC_SPC, FN0,      FN0,     KC_SPC, KC_LALT, KC_MINS, KC_QUOT, KC_ENT
   ),
 
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RS] = LAYOUT( /* [> RAISE <] */
     KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
     KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PCT,                  KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
-    SFT_GRAVE, KC_TLD,  KC_NO,   KC_NO,   KC_NO,  KC_TLD, KC_PIPE, KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, SFT_RBRC ,
+    GRAVE_SFT, KC_TLD,  KC_NO,   KC_NO,   KC_NO,  KC_TLD, KC_PIPE, KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT ,
     TG(_LW),   KC_INS,  KC_LGUI, KC_LALT, KC_SPC, FN1,    FN1,     KC_SPC,  KC_LALT, KC_EQL,  KC_LCBR, KC_RCBR
   ),
 

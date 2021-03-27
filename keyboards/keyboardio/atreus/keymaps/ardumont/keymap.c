@@ -80,3 +80,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_VOLD, KC_LGUI, KC_LALT, _______, FN2,     FN2,     _______, KC_LALT, KC_PSCR, KC_SLCK, KC_PAUS
   )
 };
+
+// Releasing the key without pressing another will send the original keycode even if it
+// is outside the tapping term, specifically for KC_A
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    return keycode == A_CTL;
+}

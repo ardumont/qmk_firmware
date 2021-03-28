@@ -32,7 +32,7 @@ enum layer_names {
 
 // Layer movment
 #define FN0 MO(_RS)  // move to layer 1 (L1)
-#define FN1 KC_TRNS  // move to layer 2 (L2)
+#define FN1 TG(_LW)  // move to layer 2 (L2)
 #define FN2 TO(_QW)  // move to layer 0 (L0)
 
 // %
@@ -46,6 +46,7 @@ enum layer_names {
    *  z/sft x     c     v   b  `   || \   n   m   ,     .  //sft
    *  esc   tab  super  alt L1 spc || spc L1  alt -     '  enter
    */
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
     KC_Q,   KC_W,   KC_E,     KC_R,    KC_T,                      KC_Y,   KC_U,    KC_I,    KC_O,    KC_P    ,
@@ -61,23 +62,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  lower tab    super alt spc L2  || L2 spc alt =    {    }
    */
   [_RS] = LAYOUT( /* [> RAISE <] */
-    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                    KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
-    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PCT,                  KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
-    GRAVE_SFT, KC_TLD,  KC_NO,   KC_NO,   KC_NO,  KC_TLD, KC_PIPE, KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT ,
-    TG(_LW),   KC_INS,  KC_LGUI, KC_LALT, KC_SPC, FN1,    FN1,     KC_SPC,  KC_LALT, KC_EQL,  KC_LCBR, KC_RCBR
+    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
+    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PCT,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
+    GRAVE_SFT, KC_TLD,  KC_NO,   KC_NO,   KC_NO,   KC_TLD, KC_PIPE, KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT,
+    FN1,       KC_TAB,  KC_LGUI, KC_LALT, KC_BSPC, FN1,    FN1,     KC_SPC,  KC_LALT, KC_EQL,  KC_LCBR, KC_RCBR
   ),
 
   /*
-   * insert home   up  end      pgup       ||     up  F7  F8    F9     F10
-   * del    left  down right    pgdn       ||    down F4  F5    F6     F11
-   * __     volup __   __       reset  __  || __ __   F1  F2    F3     F12
-   * __     voldn super alt/spc alt    L0  || L0 __   alt prtsc scroll pause
+   * F1 F2 F3    F4  F5       ||    F6  F7  F8    F9  F10
+   * __ __ __    __  __       ||    __  __  __    F11 F12
+   * __ __ __    __  reset __ || __ __  __  __    __  __
+   * L0 __ super alt __    L0 || L0 __ alt  prtsc __  L0
    */
   [_LW] = LAYOUT( /* [> LOWER <] */
-    KC_INS,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,                   KC_UP,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    KC_DEL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                   KC_DOWN, KC_F4,   KC_F5,   KC_F6,   KC_F11,
-    KC_NO,   KC_VOLU, KC_NO,   KC_NO,   RESET,   _______, _______, KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F12,
-    KC_NO,   KC_VOLD, KC_LGUI, KC_LALT, _______, FN2,     FN2,     _______, KC_LALT, KC_PSCR, KC_SLCK, KC_PAUS
+    KC_F1, KC_F2, KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,  KC_F9,  KC_F10,
+    KC_NO, KC_NO, KC_NO,   KC_NO,   KC_NO,                     KC_NO,   KC_NO,   KC_NO,  KC_F11, KC_F12,
+    KC_NO, KC_NO, KC_NO,   KC_NO,   RESET,   _______, _______, KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO ,
+    FN2,   KC_NO, KC_LGUI, KC_LALT, _______, FN2,     FN2,     _______, KC_LALT, KC_NO,  KC_NO,  FN2
   )
 };
 

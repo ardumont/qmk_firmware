@@ -81,8 +81,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-// Releasing the key without pressing another will send the original keycode even if it
-// is outside the tapping term, specifically for KC_A
-bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
-    return keycode == A_CTL;
+// Increase slightly the A_CTL to reduce its typing annoyance (lingering ctl with side
+// effect on the next keys)
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case A_CTL:
+            return TAPPING_TERM + 50;
+        default:
+            return TAPPING_TERM;
+    }
 }

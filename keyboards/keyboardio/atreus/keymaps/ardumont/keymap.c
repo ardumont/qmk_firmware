@@ -87,3 +87,57 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+// Initialize variable holding the binary
+// representation of active modifiers.
+uint8_t mod_state;
+
+bool substitute_keycode(uint16_t keycode, keyrecord_t *record, uint8_t mod_state, uint16_t substitute_keycode) {
+    /* Substitute keycode if condition matches */
+    // Initialize a boolean variable that keeps track
+    // of the delete key status: registered or not?
+    static bool key_registered;
+    // ctrl activated?
+    if ((mod_state & MOD_BIT(KC_LCTRL)) == MOD_BIT(KC_LCTRL)) {
+        if (record->event.pressed) {
+            // No need to register KC_LCTRL because it's already active.
+            unregister_code(KC_LCTRL);
+            // Send substitute code
+            register_code(substitute_keycode);
+            // Update the boolean variable to reflect the status of the register
+            key_registered = true;
+            // Reapplying modifier state so that the held shift key(s)
+            // still work even after having tapped the Backspace/Delete key.
+            set_mods(mod_state);
+            // Do not let QMK process the keycode further
+            return false;
+        } else {
+            // In case substitude_keycode is still being sent even after the release of
+            // the key
+            if (key_registered) {
+                unregister_code(substitute_keycode);
+                key_registered = false;
+                // Do not let QMK process the keycode further
+                return false;
+            }
+        }
+    }
+    // Else, let QMK process the keycode as usual
+    return true;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Store the current modifier state in the variable for later reference
+    mod_state = get_mods();
+    switch (keycode) {
+    case KC_I:
+        return substitute_keycode(keycode, record, mod_state, KC_TAB);
+    case KC_M:
+        return substitute_keycode(keycode, record, mod_state, KC_ENTER);
+    case KC_H:
+        return substitute_keycode(keycode, record, mod_state, KC_BSPC);
+    case KC_D:
+        return substitute_keycode(keycode, record, mod_state, KC_DEL);
+    }
+    return true;
+};

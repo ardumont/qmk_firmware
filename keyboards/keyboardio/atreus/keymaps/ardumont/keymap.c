@@ -35,11 +35,6 @@ enum layer_names {
 #define FN1 TG(_LW)  // move to layer 2 (L2)
 #define FN2 TO(_QW)  // move to layer 0 (L0)
 
-// %
-#define KC_PCT S(KC_5)
-// ~
-#define KC_TLD S(KC_GRAVE)
-
   /*
    *  q     w     e     r   t      ||     y   u   i/tab o  p
    *  a/ctl s     d     f   g      ||     h   j   k     l  ;/ctl
@@ -62,10 +57,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  lower tab    super alt spc L2  || L2 spc alt =    {    }
    */
   [_RS] = LAYOUT( /* [> RAISE <] */
-    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
-    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PCT,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
-    GRAVE_SFT, KC_TLD,  KC_NO,   KC_NO,   KC_NO,   KC_TLD, KC_PIPE, KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT,
-    FN1,       KC_TAB,  KC_LGUI, KC_LALT, KC_BSPC, FN1,    FN1,     KC_SPC,  KC_LALT, KC_EQL,  KC_LCBR, KC_RCBR
+    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
+    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
+    GRAVE_SFT, KC_TILD,  KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE, KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT,
+    FN1,       KC_TAB,  KC_LGUI, KC_LALT, KC_BSPC, FN1,    FN1,       KC_SPC,  KC_LALT, KC_EQL,  KC_LCBR, KC_RCBR
   ),
 
   /*

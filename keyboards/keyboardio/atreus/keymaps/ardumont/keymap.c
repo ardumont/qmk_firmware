@@ -140,10 +140,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return substitute_keycode(keycode, record, mod_state, KC_DEL);
     case KC_N:
         return substitute_keycode(keycode, record, mod_state, KC_DOWN);
-    case KC_F:
-        return substitute_keycode(keycode, record, mod_state, KC_RIGHT);
-    case KC_B:
-        return substitute_keycode(keycode, record, mod_state, KC_LEFT);
     case KC_P:
         return substitute_keycode(keycode, record, mod_state, KC_UP);
     }

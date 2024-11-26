@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,    KC_W,   KC_E,     KC_R,    KC_T,                      KC_Y,   KC_U,    KC_I,    KC_O,    KC_P    ,
     KC_A,    KC_S,   KC_D,     KC_F,    KC_G,                      KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN ,
     Z_SFT,   KC_X,   KC_C,     KC_V,    KC_B,   KC_GRAVE, KC_BSLS, KC_N,   KC_M,    KC_COMM, KC_DOT,  SLSH_SFT,
-    KC_LCTRL, KC_ESC, KC_LGUI,  KC_LALT, KC_SPC, FN0,      FN0,     KC_SPC, KC_LALT, KC_MINS, KC_QUOT, KC_LCTRL
+    KC_LCTL, KC_ESC, KC_LGUI,  KC_LALT, KC_SPC, FN0,      FN0,     KC_SPC, KC_LALT, KC_MINS, KC_QUOT, KC_LCTL
   ),
 
   /*
@@ -56,20 +56,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
     KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
     GRAVE_SFT, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE,  KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT,
-    KC_LCTRL,  KC_ESC,  KC_LGUI, KC_LALT, KC_BSPC, FN1,    FN1,       KC_SPC,  KC_LALT, KC_EQL,  KC_ESC,  KC_LCTRL
+    KC_LCTL,   KC_ESC,  KC_LGUI, KC_LALT, KC_BSPC, FN1,     FN1,      KC_SPC,  KC_LALT, KC_EQL,  KC_ESC,  KC_LCTL
   ),
 
   /*
-   * F1   F2 F3    F4  F5          ||    F6  F7  F8    F9  F10
-   * __   __ __    __  F11         ||    F12 __  __    __  __
-   * __   __ __    dbg rst eep-rst || __ __  __  __    __  __
-   * ctl  __ super alt  __    L0   || L0 __ alt  prtsc esc ctl
+   * F1  F2  F3    F4  F5      ||    F6  F7  F8    F9  F10
+   * __  __  __    __  F11     |     F12 __  __    __  __
+   * __  __  __    __  __  __  || __ __  __  __    __  __
+   * ctl esc super alt __  L0  || L0 __ alt  prtsc esc ctl
    */
   [_LW] = LAYOUT( /* [> LOWER <] */
     KC_F1,    KC_F2,  KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,  KC_F9,  KC_F10,
     KC_NO,    KC_NO,  KC_NO,   KC_NO,   KC_F11,                    KC_F12,  KC_NO,   KC_NO,  KC_NO,  KC_NO ,
-    KC_NO,    KC_NO,  KC_NO,   DEBUG,   RESET,   EEP_RST, _______, KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO ,
-    KC_LCTRL, KC_ESC, KC_LGUI, KC_LALT, _______, FN2,     FN2,     _______, KC_LALT, KC_NO,  KC_ESC, KC_LCTRL
+    KC_NO,    KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO, _______,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO ,
+    KC_LCTL,  KC_ESC, KC_LGUI, KC_LALT, _______, FN2,   FN2,       _______, KC_LALT, KC_NO,  KC_ESC, KC_LCTL
   )
 };
 
@@ -83,10 +83,10 @@ bool substitute_keycode(uint16_t keycode, keyrecord_t *record, uint8_t mod_state
     // of the delete key status: registered or not?
     static bool key_registered;
     // ctrl activated?
-    if ((mod_state & MOD_BIT(KC_LCTRL)) == MOD_BIT(KC_LCTRL)) {
+    if ((mod_state & MOD_BIT(KC_LCTL)) == MOD_BIT(KC_LCTL)) {
         if (record->event.pressed) {
-            // No need to register KC_LCTRL because it's already active.
-            unregister_code(KC_LCTRL);
+            // No need to register KC_LCTL because it's already active.
+            unregister_code(KC_LCTL);
             // Send substitute code
             register_code(substitute_keycode);
             // Update the boolean variable to reflect the status of the register

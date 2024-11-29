@@ -15,16 +15,16 @@ enum layer_names {
     _RS,
     _LW,
 };
-?
+
 // tap: z    // hold: SHIFT
-#define Z_SFT     SFT_T(KC_Z)
+#define SFT_Z     SFT_T(KC_Z)
 // tap: /    // hold: SHIFT
-#define SLSH_SFT  SFT_T(KC_SLSH)
+#define SFT_SLSH  SFT_T(KC_SLSH)
 
 // tap: `    // hold: SHIFT
-#define GRAVE_SFT SFT_T(KC_GRAVE)
+#define SFT_GRAVE SFT_T(KC_GRAVE)
 // tap: [    // hold: SHIFT
-#define RBRC_SFT  SFT_T(KC_RBRC)
+#define SFT_RBRC  SFT_T(KC_RBRC)
 
 // Layer movment
 #define FN0 MO(_RS)  // move to layer 1 (L1)
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* Qwerty */
     KC_Q,    KC_W,   KC_E,     KC_R,    KC_T,                      KC_Y,   KC_U,    KC_I,    KC_O,    KC_P    ,
     KC_A,    KC_S,   KC_D,     KC_F,    KC_G,                      KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN ,
-    Z_SFT,   KC_X,   KC_C,     KC_V,    KC_B,   KC_GRAVE, KC_BSLS, KC_N,   KC_M,    KC_COMM, KC_DOT,  SLSH_SFT,
+    SFT_Z,   KC_X,   KC_C,     KC_V,    KC_B,   KC_GRAVE, KC_BSLS, KC_N,   KC_M,    KC_COMM, KC_DOT,  SFT_SLSH,
     KC_LCTL, KC_ESC, KC_LGUI,  KC_LALT, KC_SPC, FN0,      FN0,     KC_SPC, KC_LALT, KC_MINS, KC_QUOT, KC_LCTL
   ),
 
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RS] = LAYOUT( /* [> RAISE <] */
     KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,       KC_0    ,
     KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN,    KC_RPRN ,
-    GRAVE_SFT, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE,  KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC,    RBRC_SFT,
+    SFT_GRAVE, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE,  KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC,    SFT_RBRC,
     _______,   _______, _______, _______, _______, FN1,     FN1,      _______, _______, KC_EQL,  KC_PAGE_UP, KC_PAGE_DOWN
   ),
 

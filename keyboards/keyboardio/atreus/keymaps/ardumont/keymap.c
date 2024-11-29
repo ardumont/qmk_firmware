@@ -11,10 +11,26 @@
 // other name. Layer names don't all need to be of the same length, obviously, and you
 // can also skip them entirely and just use numbers.
 enum layer_names {
-    _QW,
-    _RS,
-    _LW,
+    _QW,  // default qwerty use
+    _RS,  // Access number and extra characters
+    _LW,  // Access Fn (F0, F1, ... and qmk keyboard functionalities)
 };
+
+// Layer movement
+// https://docs.qmk.fm/feature_layers
+#define FN0 MO(_QW)  // move to layer 1 (L1)
+#define FN1 TG(_RS)  // move to layer 2 (L2)
+#define FN2 TO(_LW)  // move to layer 0 (L0)
+
+// Meaning
+// - MO: momentarily activates layer. As soon as you let go of the key, the layer is
+//   deactivated.
+// - TG: toggles layer, activating it if it's inactive and vice versaxs
+// - T0: activates layer and de-activates all other layers (except your default layer).
+// This function is special, because instead of just adding/removing one layer to your
+// active layer stack, it will completely replace your current active layers, uniquely
+// allowing you to replace higher layers with a lower one. This is activated on keydown
+// (as soon as the key is pressed).
 
 // tap: z    // hold: SHIFT
 #define SFT_Z     SFT_T(KC_Z)
@@ -25,11 +41,6 @@ enum layer_names {
 #define SFT_GRAVE SFT_T(KC_GRAVE)
 // tap: [    // hold: SHIFT
 #define SFT_RBRC  SFT_T(KC_RBRC)
-
-// Layer movment
-#define FN0 MO(_RS)  // move to layer 1 (L1)
-#define FN1 TG(_LW)  // move to layer 2 (L2)
-#define FN2 TO(_QW)  // move to layer 0 (L0)
 
   /*
    *  q     w     e     r   t      ||     y   u   i/tab o  p

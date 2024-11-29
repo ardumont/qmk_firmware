@@ -47,16 +47,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /*
-   *  1     2      3     4   5       ||    6   7   8    9    0
-   *  !     @      #     $   %       ||    ^   &   *    (    )
-   *  `/sft ~      ?     ?   ?   ~   || |  +   -   /    [    ]/sft
-   *  ctl   esc    super alt spc L2  || L2 spc alt =    '    ctl
+   *  1     2      3     4   5       ||    6   7   8    9      0
+   *  !     @      #     $   %       ||    ^   &   *    (      )
+   *  `/sft ~      ?     ?   ?   ~   || |  +   -   /    [      ]/sft
+   *  ctl   esc    super alt spc L2  || L2 spc alt =    pageup pagedown
    */
   [_RS] = LAYOUT( /* [> RAISE <] */
-    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
-    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
-    GRAVE_SFT, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE,  KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT,
-    _______,   _______, _______, _______, _______, FN1,     FN1,      _______, _______, KC_EQL,  _______, _______
+    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,       KC_0    ,
+    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN,    KC_RPRN ,
+    GRAVE_SFT, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE,  KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC,    RBRC_SFT,
+    _______,   _______, _______, _______, _______, FN1,     FN1,      _______, _______, KC_EQL,  KC_PAGE_UP, KC_PAGE_DOWN
   ),
 
   /*

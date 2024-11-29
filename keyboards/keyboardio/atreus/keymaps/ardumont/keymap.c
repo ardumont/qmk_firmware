@@ -60,15 +60,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /*
-   * F1  F2  F3    F4  F5           ||    F6  F7  F8    F9  F10
-   * __  __  __    __  F11          ||    F12 __  __    __  __
-   * __  __  __    dbg rst eep-clr  || __ __  __  __    __  __
-   * ctl esc super alt __  L0       || L0 __ alt  prtsc esc ctl
+   * F1    F2  F3    F4      F5    ||    F6  F7  F8    F9  F10
+   * __    __  __    __      F11   ||    F12 __  __    __  __
+   * bootl dbg rst   eep-clr __ __ ||  __  __  __    __  __
+   * ctl   esc super alt __  L0    || L0 __ alt  prtsc esc ctl
    */
   [_LW] = LAYOUT( /* [> LOWER <] */
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_F11,                    KC_F12,  KC_NO,   KC_NO,   KC_NO,   KC_NO ,
-    KC_NO,   KC_NO,   KC_NO,   DB_TOGG, QK_RBT,  EE_CLR, _______,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO ,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_F11,                    KC_F12,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    QK_BOOT, DB_TOGG, QK_RBT,  EE_CLR,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO ,  KC_NO,   KC_NO ,  KC_NO,
     _______, _______, _______, _______, _______, FN2,    FN2,      _______, _______, KC_PSCR, _______, _______
   )
 };

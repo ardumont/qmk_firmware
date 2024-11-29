@@ -11,26 +11,26 @@
 // other name. Layer names don't all need to be of the same length, obviously, and you
 // can also skip them entirely and just use numbers.
 enum layer_names {
-    _QW,  // default qwerty use
-    _RS,  // Access number and extra characters
-    _LW,  // Access Fn (F0, F1, ... and qmk keyboard functionalities)
+    _LAYER0,  // default qwerty use
+    _LAYER1,  // Access number and extra characters (!, ...)
+    _LAYER2,  // Access Fn (F0, F1, ... and qmk keyboard functionalities)
 };
 
 // Layer movement
 // https://docs.qmk.fm/feature_layers
-#define FN0 MO(_QW)  // move to layer 1 (L1)
-#define FN1 TG(_RS)  // move to layer 2 (L2)
-#define FN2 TO(_LW)  // move to layer 0 (L0)
+#define FN0 MO(_LAYER1)  // move to layer 1 (L1)
+#define FN1 TG(_LAYER2)  // move to layer 2 (L2)
+#define FN2 TO(_LAYER0)  // move to layer 0 (L0)
 
 // Meaning
 // - MO: momentarily activates layer. As soon as you let go of the key, the layer is
 //   deactivated.
 // - TG: toggles layer, activating it if it's inactive and vice versaxs
 // - T0: activates layer and de-activates all other layers (except your default layer).
-// This function is special, because instead of just adding/removing one layer to your
-// active layer stack, it will completely replace your current active layers, uniquely
-// allowing you to replace higher layers with a lower one. This is activated on keydown
-// (as soon as the key is pressed).
+//   This function is special, because instead of just adding/removing one layer to your
+//   active layer stack, it will completely replace your current active layers, uniquely
+//   allowing you to replace higher layers with a lower one. This is activated on keydown
+//   (as soon as the key is pressed).
 
 // tap: z    // hold: SHIFT
 #define SFT_Z     SFT_T(KC_Z)
@@ -50,7 +50,7 @@ enum layer_names {
    */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QW] = LAYOUT( /* Qwerty */
+  [_LAYER0] = LAYOUT( /* Qwerty */
     KC_Q,    KC_W,   KC_E,     KC_R,    KC_T,                      KC_Y,   KC_U,    KC_I,    KC_O,    KC_P    ,
     KC_A,    KC_S,   KC_D,     KC_F,    KC_G,                      KC_H,   KC_J,    KC_K,    KC_L,    KC_SCLN ,
     SFT_Z,   KC_X,   KC_C,     KC_V,    KC_B,   KC_GRAVE, KC_BSLS, KC_N,   KC_M,    KC_COMM, KC_DOT,  SFT_SLSH,
@@ -63,11 +63,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  `/sft ~      ?     ?   ?   ~   || |  +   -   /    [      ]/sft
    *  ctl   esc    super alt spc L2  || L2 spc alt =    pageup pagedown
    */
-  [_RS] = LAYOUT( /* [> RAISE <] */
-    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,       KC_0    ,
-    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN,    KC_RPRN ,
-    SFT_GRAVE, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE,  KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC,    SFT_RBRC,
-    _______,   _______, _______, _______, _______, FN1,     FN1,      _______, _______, KC_EQL,  KC_PAGE_UP, KC_PAGE_DOWN
+  [_LAYER1] = LAYOUT( /* [> RAISE <] */
+    KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,       KC_0    ,
+    KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN,    KC_RPRN ,
+    SFT_GRAVE, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE, KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC,    SFT_RBRC,
+    _______,   _______, _______, _______, _______, FN1,     FN1,     _______, _______, KC_EQL,  KC_PAGE_UP, KC_PAGE_DOWN
   ),
 
   /*
@@ -76,11 +76,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * bootl dbg rst   eep-clr __ __ ||  __  __  __    __  __
    * ctl   esc super alt __  L0    || L0 __ alt  prtsc esc ctl
    */
-  [_LW] = LAYOUT( /* [> LOWER <] */
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_F11,                    KC_F12,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
-    QK_BOOT, DB_TOGG, QK_RBT,  EE_CLR,  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO ,  KC_NO,   KC_NO ,  KC_NO,
-    _______, _______, _______, _______, _______, FN2,    FN2,      _______, _______, KC_PSCR, _______, _______
+  [_LAYER2] = LAYOUT( /* [> LOWER <] */
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                 KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_F11,                KC_F12,  KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    QK_BOOT, DB_TOGG, QK_RBT,  EE_CLR,  KC_NO,   KC_NO, KC_NO, KC_NO,   KC_NO ,  KC_NO,   KC_NO ,  KC_NO,
+    _______, _______, _______, _______, _______, FN2,   FN2,   _______, _______, KC_PSCR, _______, _______
   )
 };
 

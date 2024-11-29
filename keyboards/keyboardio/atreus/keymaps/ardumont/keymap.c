@@ -50,13 +50,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  1     2      3     4   5       ||    6   7   8    9    0
    *  !     @      #     $   %       ||    ^   &   *    (    )
    *  `/sft ~      ?     ?   ?   ~   || |  +   -   /    [    ]/sft
-   *  ctl   esc    super alt spc L2  || L2 spc alt =    esc  ctl
+   *  ctl   esc    super alt spc L2  || L2 spc alt =    '    ctl
    */
   [_RS] = LAYOUT( /* [> RAISE <] */
     KC_1,      KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0    ,
     KC_EXLM,   KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN ,
     GRAVE_SFT, KC_TILD, KC_NO,   KC_NO,   KC_NO,   KC_TILD, KC_PIPE,  KC_PLUS, KC_MINS, KC_SLSH, KC_LBRC, RBRC_SFT,
-    KC_LCTL,   KC_ESC,  KC_LGUI, KC_LALT, KC_BSPC, FN1,     FN1,      KC_SPC,  KC_LALT, KC_EQL,  KC_ESC,  KC_LCTL
+    _______,   _______, _______, _______, _______, FN1,     FN1,      _______, _______, KC_EQL,  _______, _______
   ),
 
   /*
@@ -66,10 +66,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ctl esc super alt __  L0  || L0 __ alt  prtsc esc ctl
    */
   [_LW] = LAYOUT( /* [> LOWER <] */
-    KC_F1,    KC_F2,  KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,  KC_F9,  KC_F10,
-    KC_NO,    KC_NO,  KC_NO,   KC_NO,   KC_F11,                    KC_F12,  KC_NO,   KC_NO,  KC_NO,  KC_NO ,
-    KC_NO,    KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO, _______,   KC_NO,   KC_NO,   KC_NO,  KC_NO,  KC_NO ,
-    KC_LCTL,  KC_ESC, KC_LGUI, KC_LALT, _______, FN2,   FN2,       _______, KC_LALT, KC_NO,  KC_ESC, KC_LCTL
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_F11,                    KC_F12,  KC_NO,   KC_NO,   KC_NO,   KC_NO ,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, _______,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO ,
+    _______, _______, _______, _______, _______, FN2,   FN2,       _______, _______, KC_MINS, _______, _______
   )
 };
 
